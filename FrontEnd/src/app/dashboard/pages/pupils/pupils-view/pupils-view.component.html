@@ -1,0 +1,165 @@
+<div class="flex justify-around">
+  <img
+    class="object-cover w-full rounded-t-lg h-60 md:h-auto md:w-60 md:rounded-none md:rounded-l-lg"
+    src="{{ api.api }}/{{ item?.photo }}"
+    alt=""
+  />
+  <div class="flex flex-col justify-between p-4 leading-normal">
+    <h5
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+    >
+      {{ item?.fullName }}
+    </h5>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      Date of Birth : {{ item?.dateOfBirth }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      gender : {{ item?.gender }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      address : {{ item?.address }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      email : {{ item?.email }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      parentName : {{ item?.parentName }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      parentPhoneNumber : {{ item?.parentPhoneNumber }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      emergencyName : {{ item?.emergencyName }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      emergencyPhoneNumber : {{ item?.emergencyPhoneNumber }}
+    </p>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      emergencyRelationship : {{ item?.emergencyRelationship }}
+    </p>
+  </div>
+
+  <div class="flex-col pl-5">
+    <a
+      (click)="editItem()"
+      class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+        />
+      </svg>
+      Edit
+    </a>
+    <br /><br /><br />
+    <a
+      routerLink="/dashboard/add-remark"
+      class="font-medium text-green-600 dark:text-green-800 hover:underline"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="text-green-600 w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
+        />
+      </svg>
+
+      New remark
+    </a>
+  </div>
+</div>
+
+<!-- Recent remarks -->
+
+<section class="bg-amber-200 rounded-t-lg mt-9 dark:bg-gray-900 py-8 lg:py-16">
+  <div class="max-w-2xl mx-auto px-4">
+    <div class="flex justify-between items-center mb-6">
+      <div>
+        <h2
+          class="text-lg lg:text-xs underline font-bold text-gray-900 dark:text-white"
+        >
+          Recent Discussion
+        </h2>
+        <br />
+        <h6 class="text-lg lg:text-3xl text-teal-800 font-bold dark:text-white">
+          {{ remark?.remark }}
+        </h6>
+        <p class="text-2xs text-stone-700 font-bold dark:text-white">
+          {{ remark?.date }}
+        </p>
+      </div>
+    </div>
+    <form class="mb-6" [formGroup]="commentForm" (ngSubmit)="commentSubmit()">
+      <div
+        class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+      >
+        <label for="comment" class="sr-only">Your comment</label>
+        <textarea
+          id="comment"
+          rows="6"
+          class="px-0 w-full text-sm text-gray-900 border-0 focus:ring-0 focus:outline-none dark:text-white dark:placeholder-gray-400 dark:bg-gray-800"
+          placeholder="Write a comment..."
+          required
+          formControlName="text"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-sky-500 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
+      >
+        Post comment
+      </button>
+    </form>
+    <article
+      class="p-6 mb-6 text-base bg-white rounded-lg dark:bg-gray-900"
+      *ngFor="let item of comments"
+    >
+      <footer class="flex justify-between items-center mb-2">
+        <div class="flex items-center">
+          <p
+            class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"
+          >
+            <img
+              class="mr-2 w-6 h-6 rounded-full"
+              src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+              alt="Michael Gough"
+            />Michael Gough
+          </p>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{
+              item.date
+            }}</time>
+          </p>
+        </div>
+      </footer>
+      <p class="text-gray-500 dark:text-gray-400">
+        {{ item.text }}
+      </p>
+    </article>
+  </div>
+</section>
+
+<!-- ?Remarks  -->
+
+<!-- Main modal -->
+
+    <!-- Modal content -->
+
+
+     
