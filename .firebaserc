@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "freelance-app-9f95f": {
+      "hosting": {
+        "FrontEnd": [
+          "freelance-app-9f95f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "freelance-app-9f95f"
+  }
+}

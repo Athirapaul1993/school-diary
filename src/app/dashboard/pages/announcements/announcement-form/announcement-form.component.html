@@ -1,0 +1,125 @@
+<!-- Modal content -->
+<div class="relative  bg-slate-400 h-screen rounded-xl p-16 shadow dark:bg-gray-700">
+  <!-- Modal header -->
+  <div
+    class="flex items-center justify-center p-4 border-b rounded-t dark:border-gray-600"
+  >
+    <h3
+      class="block py-3 uppercase tracking-wide  text-teal-50  text-3xl font-bold mb-2"
+    >
+      New Announcement
+    </h3>
+  </div>
+  <!-- Modal body -->
+  <div class="p-6 space-y-6 flex items-center justify-center">
+    <form class="w-full" [formGroup]="announcementForm" (ngSubmit)="onSubmit()">
+      <!-- *fullname and DOB  -->
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <h3 class="block uppercase tracking-wide text-gray-700 text-xs font-bold m-3 required">TYPE</h3>
+        <ul
+          class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        >
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+          >
+            <div class="flex items-center pl-3 bg-pink-600 rounded">
+              <input
+                id="horizontal-list-radio-license"
+                type="radio"
+                value="General Event"
+                checked
+                formControlName="type"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="horizontal-list-radio-license"
+                class="w-full py-3 ml-2 text-sm font-medium text-zinc-100 dark:text-gray-300  "
+                >General Event
+              </label>
+            </div>
+          </li>
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+          >
+            <div class="flex items-center pl-3  bg-lime-700 rounded">
+              <input
+                id="horizontal-list-radio-id"
+                type="radio"
+                value="Homework"
+                formControlName="type"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="horizontal-list-radio-id"
+                class="w-full py-3 ml-2 text-sm font-medium text-zinc-100 dark:text-gray-300"
+                >Homework</label
+              >
+            </div>
+          </li>
+          <li
+            class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600"
+          >
+            <div class="flex items-center pl-3  bg-teal-600 rounded">
+              <input
+                id="horizontal-list-radio-millitary"
+                type="radio"
+                value="Student Achievement"
+                formControlName="type"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="horizontal-list-radio-millitary"
+                class="w-full py-3 ml-2 text-sm font-medium text-zinc-100 dark:text-gray-300"
+                >Student Achievement</label
+              >
+            </div>
+          </li>
+          <li class="w-full dark:border-gray-600">
+            <div class="flex items-center pl-3  bg-fuchsia-700 rounded ">
+              <input
+                id="horizontal-list-radio-passport"
+                type="radio"
+                value="Volunteering Activity"
+                formControlName="type"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+              />
+              <label
+                for="horizontal-list-radio-passport"
+                class="w-full py-3 ml-2 text-sm font-medium text-zinc-100 dark:text-gray-300"
+                >Volunteering Activity</label
+              >
+            </div>
+          </li>
+        </ul>
+
+        <div class="w-full p-3">
+          <label
+            class="block uppercase tracking-wide text-gray-700 text-xs font-bold m-3 required"
+            for="grid-last-name"
+          >
+            Description
+          </label>
+          <textarea
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+            id="grid-last-name"
+            type="date"
+            placeholder="Doe"
+            formControlName="description"
+          ></textarea>
+        </div>
+      </div>
+
+      <div
+        class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600"
+      >
+        <button
+          type="submit"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- Modal footer -->
+</div>
