@@ -16,31 +16,56 @@ import { RoleGuard } from '../auth/role.guard';
 
 const routes: Routes = [
   {
-    path: '', component: DashboardComponent, children: [
+    path: '',
+    component: DashboardComponent,
+    children: [
       { path: '', pathMatch: 'full', component: AnnouncementListComponent },
-      { path: 'pupils', canActivate:[RoleGuard],component: PupilsListComponent },
-      { path: 'add-new',canActivate:[RoleGuard], component: PupilsComponent },
+      {
+        path: 'pupils',
+        canActivate: [RoleGuard],
+        component: PupilsListComponent,
+      },
+      {
+        path: 'add-new',
+        canActivate: [RoleGuard],
+        component: PupilsComponent,
+      },
       { path: 'view-item', component: PupilsViewComponent },
-      { path: 'edit-item',canActivate:[RoleGuard], component: PupilsEditComponent },
-      { path: 'add-remark',canActivate:[RoleGuard], component: AddRemarksComponent },
+      {
+        path: 'edit-item',
+        canActivate: [RoleGuard],
+        component: PupilsEditComponent,
+      },
+      {
+        path: 'add-remark',
+        canActivate: [RoleGuard],
+        component: AddRemarksComponent,
+      },
       { path: 'announcements', component: AnnouncementListComponent },
-      { path: 'announcement-new',canActivate:[RoleGuard], component: AnnouncementFormComponent },
-      { path: 'announcement-edit', canActivate:[RoleGuard], component: AnnouncementEditComponent },
+      {
+        path: 'announcement-new',
+        canActivate: [RoleGuard],
+        component: AnnouncementFormComponent,
+      },
+      {
+        path: 'announcement-edit',
+        canActivate: [RoleGuard],
+        component: AnnouncementEditComponent,
+      },
       { path: 'announcement-view', component: AnnouncementViewComponent },
 
       { path: 'calender', component: CalenderComponent },
-      { path: 'add-event',canActivate:[RoleGuard], component: AddEventComponent },
-
-
-
+      {
+        path: 'add-event',
+        canActivate: [RoleGuard],
+        component: AddEventComponent,
+      },
     ],
   },
-
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}
