@@ -13,9 +13,10 @@ mongoose
   })
   .then(async () => {
     const item = {
-      fullName: "Teacher",
-      email: "teacher@classtrackr.com",
-      password: "teacher@123",
+      fullName: "Admin",
+      email: "admin@classtrackr.com",
+      password: "admin@123",
+      teacher: true,
       admin: true,
     };
 

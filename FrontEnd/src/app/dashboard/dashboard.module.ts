@@ -1,4 +1,4 @@
-import {  NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -21,8 +21,10 @@ import { AddEventComponent } from './pages/events/add-event/add-event.component'
 import { AnnouncementViewComponent } from './pages/announcements/announcement-view/announcement-view.component';
 import { AddRemarksComponent } from './pages/pupils/add-remarks/add-remarks.component';
 import { RoleGuard } from '../auth/role.guard';
-
-
+import { TeachersListComponent } from './pages/teachers/teachers-list/teachers-list.component';
+import { TeachersViewComponent } from './pages/teachers/teachers-view/teachers-view.component';
+import { TeachersFormComponent } from './pages/teachers/teachers-form/teachers-form.component';
+import { TeachersEditComponent } from './pages/teachers/teachers-edit/teachers-edit.component';
 
 @NgModule({
   declarations: [
@@ -40,17 +42,19 @@ import { RoleGuard } from '../auth/role.guard';
     CalenderComponent,
     AddEventComponent,
     AnnouncementViewComponent,
-    AddRemarksComponent
+    AddRemarksComponent,
+    TeachersEditComponent,
+    TeachersListComponent,
+    TeachersFormComponent,
+    TeachersViewComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
   ],
-  providers: [BackendService, SearchPipe,RoleGuard],
-
-
+  providers: [BackendService, SearchPipe, RoleGuard],
 })
-export class DashboardModule { }
+export class DashboardModule {}

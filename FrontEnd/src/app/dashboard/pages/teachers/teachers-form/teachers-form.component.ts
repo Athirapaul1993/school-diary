@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-pupils',
-  templateUrl: './pupils.component.html',
-  styleUrls: ['./pupils.component.scss'],
+  selector: 'app-teachers-form',
+  templateUrl: './teachers-form.component.html',
+  styleUrls: ['./teachers-form.component.scss'],
 })
-export class PupilsComponent {
+export class TeachersFormComponent {
   nurseryStudentForm!: FormGroup;
   selectedFile: any = null;
   images: any;
@@ -29,9 +29,6 @@ export class PupilsComponent {
       address: [''],
       email: ['', Validators.required],
       password: ['', Validators.required],
-      // image: [null],
-      parentName: ['', Validators.required],
-      parentPhoneNumber: ['', Validators.required],
       emergencyName: ['', Validators.required],
       emergencyPhoneNumber: ['', Validators.required],
       emergencyRelationship: [''],
@@ -56,8 +53,7 @@ export class PupilsComponent {
       this.fd.append('image', this.selectedFile, this.selectedFile.name); //image appended last due to bug
     }
 
-    this.api.addItem(this.fd).subscribe((res: any) => {
-      console.log(this.fd);
+    this.api.addTeacher(this.fd).subscribe((res: any) => {
       if (res.status) {
         Swal.fire({
           icon: 'success',
@@ -65,7 +61,7 @@ export class PupilsComponent {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          this.router.navigate(['/dashboard/pupils']);
+          this.router.navigate(['/dashboard/teachers']);
         });
       } else {
         Swal.fire({
@@ -74,7 +70,7 @@ export class PupilsComponent {
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
-          this.router.navigate(['/dashboard/pupils']);
+          this.router.navigate(['/dashboard/teachers']);
         });
       }
     });

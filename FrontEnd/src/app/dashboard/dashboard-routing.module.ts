@@ -13,6 +13,10 @@ import { AddEventComponent } from './pages/events/add-event/add-event.component'
 import { AnnouncementViewComponent } from './pages/announcements/announcement-view/announcement-view.component';
 import { AddRemarksComponent } from './pages/pupils/add-remarks/add-remarks.component';
 import { RoleGuard } from '../auth/role.guard';
+import { TeachersListComponent } from './pages/teachers/teachers-list/teachers-list.component';
+import { TeachersFormComponent } from './pages/teachers/teachers-form/teachers-form.component';
+import { TeachersViewComponent } from './pages/teachers/teachers-view/teachers-view.component';
+import { TeachersEditComponent } from './pages/teachers/teachers-edit/teachers-edit.component';
 
 const routes: Routes = [
   {
@@ -60,6 +64,18 @@ const routes: Routes = [
         canActivate: [RoleGuard],
         component: AddEventComponent,
       },
+      {
+        path: 'teachers',
+        canActivate: [RoleGuard],
+        component: TeachersListComponent,
+      },
+      {
+        path: 'add-teacher',
+        canActivate: [RoleGuard],
+        component: TeachersFormComponent,
+      },
+      { path: 'view-teacher', component: TeachersViewComponent },
+      { path: 'edit-teacher', component: TeachersEditComponent },
     ],
   },
 ];

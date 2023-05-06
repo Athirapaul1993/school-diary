@@ -3,24 +3,26 @@ import { Router } from '@angular/router';
 import { BackendService } from '../../../backend.service';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/auth/auth.service';
+
 @Component({
-  selector: 'app-announcement-list',
-  templateUrl: './announcement-list.component.html',
-  styleUrls: ['./announcement-list.component.scss'],
+  selector: 'app-teachers-list',
+  templateUrl: './teachers-list.component.html',
+  styleUrls: ['./teachers-list.component.scss'],
 })
-export class AnnouncementListComponent {
+export class TeachersListComponent {
   constructor(
     private route: Router,
     public api: BackendService,
     private auth: AuthService
   ) {}
 
-  query: String = '';
-  announcements: any;
+  query = '';
+  pupils: any;
   //redirect to add form
   addItem() {
-    this.route.navigate(['dashboard/announcement-new']);
+    this.route.navigate(['dashboard/add-teacher']);
   }
+
   isAuthorized() {
     return this.auth.isTeacher();
   }
@@ -30,8 +32,9 @@ export class AnnouncementListComponent {
   }
 
   getItems() {
-    this.api.getNotice().subscribe((res: any) => {
-      this.announcements = res.data;
+    this.api.getItems().subscribe((res: any) => {
+      let list = res.data;
+      this.pupils = list.filter((i: any) => i.teacher && !i.admin);
     });
   }
 
@@ -46,19 +49,23 @@ export class AnnouncementListComponent {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    }).then((result) => {
+      timer: 30000,
+    }).then((result: any) => {
       if (result.isConfirmed) {
-        this.api.deleteNotice(id).subscribe((result) => {
-          this.announcements = this.announcements.filter(
-            (item: any) => item._id !== id
-          );
+        this.api.deleteItem(id).subscribe((result: any) => {
+          this.pupils = this.pupils.filter((item: any) => item._id !== id);
         });
       }
     });
   }
 
   viewItem(id: any) {
-    localStorage.setItem('announcement_id', id);
-    this.route.navigate(['dashboard/announcement-view']);
+    localStorage.setItem('pupil_id', id);
+    this.route.navigate(['dashboard/view-teacher']);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.route.navigate(['/login']);
   }
 }

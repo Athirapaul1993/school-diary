@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/auth/auth.service';
+
 @Component({
-  selector: 'app-pupils-view',
-  templateUrl: './pupils-view.component.html',
-  styleUrls: ['./pupils-view.component.scss'],
+  selector: 'app-teachers-view',
+  templateUrl: './teachers-view.component.html',
+  styleUrls: ['./teachers-view.component.scss'],
 })
-export class PupilsViewComponent {
+export class TeachersViewComponent {
   item: any;
   remark: any;
 
@@ -36,6 +37,7 @@ export class PupilsViewComponent {
     this.getIndividualData(id);
     this.getRecentRemark(id);
   }
+
   isAuthorized() {
     return this.auth.isTeacher();
   }
@@ -65,6 +67,6 @@ export class PupilsViewComponent {
   }
 
   editItem() {
-    this.router.navigate(['/dashboard/edit-item']);
+    this.router.navigate(['/dashboard/edit-teacher']);
   }
 }
