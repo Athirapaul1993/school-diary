@@ -39,7 +39,7 @@
     </p>
   </div>
 
-  <div class="flex-col pl-5">
+  <div class="flex-col pl-5" *ngIf="isAuthorized()">
     <a
       (click)="editItem()"
       class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
@@ -137,9 +137,9 @@
           >
             <img
               class="mr-2 w-6 h-6 rounded-full"
-              src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-              alt="Michael Gough"
-            />Michael Gough
+              src="../../../../../assets/images/blankDp.webp"
+              alt="User"
+            />User
           </p>
           <p class="text-sm text-gray-600 dark:text-gray-400">
             <time pubdate datetime="2022-02-08" title="February 8th, 2022">{{
@@ -159,7 +159,4 @@
 
 <!-- Main modal -->
 
-    <!-- Modal content -->
-
-
-     
+<!-- Modal content -->
