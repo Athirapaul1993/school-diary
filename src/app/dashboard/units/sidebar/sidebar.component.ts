@@ -28,6 +28,10 @@ export class SidebarComponent {
   }
 
   isAuthorized(): boolean {
+    return this.auth.isTeacher();
+  }
+
+  isAdmin(): boolean {
     return this.auth.isAdmin();
   }
   getEmail() {
